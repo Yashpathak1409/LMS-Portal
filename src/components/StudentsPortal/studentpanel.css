@@ -1,0 +1,124 @@
+/* Unique container for student panel */
+.student-container {
+    max-width: 950px;
+    margin: 50px auto;
+    padding: 30px;
+    background: linear-gradient(135deg, #e3f2fd, #ffffff);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    font-family: "Poppins", sans-serif;
+  }
+  
+  /* Title Styling */
+  .student-container h2 {
+    font-size: 30px;
+    font-weight: 600;
+    color: #0d47a1;
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+  }
+  
+  .student-container h2::after {
+    content: '';
+    width: 60px;
+    height: 3px;
+    background-color: #0d47a1;
+    display: block;
+    margin: 10px auto 0;
+    border-radius: 2px;
+  }
+  
+  /* Course List */
+  .student-course-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .student-course-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    margin-bottom: 16px;
+    padding: 18px 22px;
+    border-left: 6px solid #2196f3;
+    border-radius: 8px;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+  
+  .student-course-item:hover {
+    background: #e8f4fd;
+    transform: translateY(-3px);
+  }
+  
+  /* Button Group */
+  .student-button-group {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .student-details-button,
+  .student-enroll-button {
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .student-details-button {
+    background-color: #1e88e5;
+    color: white;
+  }
+  
+  .student-details-button:hover {
+    background-color: #1565c0;
+  }
+  
+  .student-enroll-button {
+    background-color: #43a047;
+    color: white;
+  }
+  
+  .student-enroll-button:hover {
+    background-color: #2e7d32;
+  }
+  
+  /* Loading and Error */
+  .student-loading,
+  .student-error {
+    text-align: center;
+    font-size: 16px;
+    color: #444;
+    margin-top: 20px;
+  }
+  
+  .student-error {
+    color: #d32f2f;
+    font-weight: 600;
+  }
+  
+  /* Responsive */
+  @media (max-width: 640px) {
+    .student-course-item {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 16px;
+    }
+  
+    .student-button-group {
+      margin-top: 12px;
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .student-details-button,
+    .student-enroll-button {
+      width: 100%;
+    }
+  }
+  

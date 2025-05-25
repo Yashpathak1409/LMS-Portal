@@ -1,0 +1,115 @@
+.home-container {
+    font-family: "Segoe UI", sans-serif;
+    color: #1a1a1a;
+    background: #f8f9fc;
+    padding: 2rem;
+  }
+  
+  .home-hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    border-radius: 20px;
+    margin-bottom: 3rem;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .home-btn {
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .primary {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .primary:hover {
+    background-color: #0056b3;
+  }
+  
+  .secondary {
+    background-color: white;
+    border: 2px solid #007bff;
+    color: #007bff;
+  }
+  
+  .secondary:hover {
+    background-color: #e6f0ff;
+  }
+  
+  .hero-image {
+    width: 400px;
+    border-radius: 20px;
+  }
+  
+  .highlights {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  .highlight-card {
+    background: white;
+    flex: 1;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  
+  .featured-courses {
+    text-align: center;
+  }
+  
+  .course-cards {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  
+  .course-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 20px;
+    width: 280px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    text-align: center;
+  }
+  
+  .course-card img {
+    width: 60px;
+    margin-bottom: 1rem;
+  }
+  
+  .home-footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  

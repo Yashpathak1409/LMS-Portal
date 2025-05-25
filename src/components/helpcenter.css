@@ -1,0 +1,91 @@
+.help-wrapper {
+    min-height: 100vh;
+    padding: 60px 20px;
+    background: radial-gradient(circle at top left, #dbeafe, #f0f9ff);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    animation: fadeIn 1s ease-in;
+  }
+  
+  .help-heading {
+    font-size: 3.5rem;
+    color: #1e3a8a;
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px #bfdbfe;
+  }
+  
+  .help-subtext {
+    font-size: 1.3rem;
+    color: #334155;
+    margin-bottom: 50px;
+    max-width: 700px;
+    text-align: center;
+  }
+  
+  .help-grid {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  .help-card {
+    background: linear-gradient(135deg, #e0f2fe, #ffffff);
+    padding: 40px 30px;
+    border-radius: 20px;
+    width: 320px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    border: 2px solid transparent;
+  }
+  
+  .help-card:hover {
+    transform: translateY(-12px);
+    border: 2px solid #3b82f6;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+    background-color: #f0f9ff;
+  }
+  
+  .help-icon {
+    color: #1d4ed8;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+  }
+  
+  .help-card h3 {
+    font-size: 1.8rem;
+    color: #1e293b;
+    margin-bottom: 12px;
+  }
+  
+  .help-card p {
+    font-size: 1.1rem;
+    color: #475569;
+    margin-bottom: 10px;
+  }
+  
+  .availability {
+    font-size: 0.95rem;
+    color: #10b981;
+    font-weight: 600;
+  }
+  
+  /* Smooth fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
