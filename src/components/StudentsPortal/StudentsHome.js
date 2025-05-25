@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ReactPlayer from "react-player";
-// import "./pannelstyle.css";
 
 const StudentsHome = () => {
     const [courseData, setCourseData] = useState([]);
@@ -41,16 +40,11 @@ const StudentsHome = () => {
     };
 
     const handleJoinCourse = (course) => {
-        if (course.purchased) {
-            alert(`You have joined the course: ${course.title}`);
-            localStorage.setItem("joinedCourseId", course._id);
-            navigate("/ContentBox/myclasses", {
-                state: { videos: course.videos },
-            });
-        } else {
-            alert("❌ You need to purchase this course before joining.");
-            navigate(`/purchase/${course._id}`);
-        }
+        alert(`You have joined the course: ${course.title}`);
+        localStorage.setItem("joinedCourseId", course._id);
+        navigate("/ContentBox/myclasses", {
+            state: { videos: course.videos },
+        });
     };
 
     return (
@@ -81,9 +75,9 @@ const StudentsHome = () => {
                                             <button
                                                 className="btn btn-green"
                                                 onClick={() => handleJoinCourse(course)}
-                                                aria-label={`Join or purchase course: ${course.title}`}
+                                                aria-label={`Join course: ${course.title}`}
                                             >
-                                                {course.purchased ? "✅ Join Course" : "💳 Purchase Course"}
+                                                ✅ Join Course
                                             </button>
                                         </div>
 

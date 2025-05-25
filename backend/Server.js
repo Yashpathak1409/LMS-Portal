@@ -22,7 +22,7 @@ if (!process.env.MONGODB_URI) {
   process.exit(1);
 }
 mongoose
-  .connect(process.env.MONGODB_URI, { dbName: "lmsportal" })
+  .connect(process.env.MONGODB_URI, { dbName: "yashpathakauth1409atlas" }) // 🔁 Updated database name here
   .then(() => console.log("✅ MongoDB connected successfully"))
   .catch((err) => console.error("❌ MongoDB connection error:", err));
 
@@ -38,7 +38,7 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-const User = mongoose.model("User", userSchema, "users");
+const User = mongoose.model("User", userSchema, "lmsusers"); // 🔁 Changed from "users" to "lmsusers"
 
 const courseSchema = new mongoose.Schema(
   {
@@ -57,13 +57,11 @@ const courseSchema = new mongoose.Schema(
         description: { type: String },
       },
     ],
-    // ✅ New Field: Array of user IDs who purchased this course
-    purchasedBy: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
   },
   { timestamps: true }
 );
 
-const Course = mongoose.model("Course", courseSchema, "coursesyash");
+const Course = mongoose.model("Course", courseSchema, "studentscourses"); // 🔁 Changed from "courseyash" to "studentscourses"
 
 
 
@@ -147,6 +145,8 @@ app.post("/register", async (req, res) => {
     res.status(500).json({ message: "❌ Internal Server Error" });
   }
 });
+
+
 // login routes 
 app.post("/login", async (req, res) => {
   try {
