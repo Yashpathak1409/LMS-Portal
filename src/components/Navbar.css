@@ -1,0 +1,89 @@
+/* ===========================
+   Navbar Styles
+=========================== */
+
+/* Navbar Container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  padding: 15px 40px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  border-radius: 0 0 15px 15px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Logo */
+.navbar .logo {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.navbar .logo:hover {
+  transform: scale(1.05);
+  color: #ffe600;
+}
+
+/* Links Container */
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+/* Links Style */
+.navbar .nav-links li a,
+.navbar .nav-links li button.navelink {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 8px 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+/* Hover Effect */
+.navbar .nav-links li a:hover,
+.navbar .nav-links li button.navelink:hover {
+  background-color: rgba(255,255,255,0.2);
+  transform: scale(1.05);
+}
+
+/* Logout Button Unique Style */
+.navbar .nav-links li button.logout {
+  background: linear-gradient(90deg, #ff758c, #ff7eb3);
+  color: #fff;
+  font-weight: 600;
+}
+
+.navbar .nav-links li button.logout:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* Responsive: Mobile */
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 20px;
+  }
+
+  .navbar .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

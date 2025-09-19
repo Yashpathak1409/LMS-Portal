@@ -29,6 +29,18 @@ import UpdateCourse from "./components/Admin/UpdateCourse";
 import StudentCourses from "./components/StudentsPortal/StudentCourses";
 import StudentsHome from "./components/StudentsPortal/StudentsHome";
 import StudentProfile from "./components/StudentsPortal/StudentProfile";
+import Mockinterview from "./components/Aicomponents/MockInterview";
+import Quiz from "./components/Aicomponents/Quiz";
+import AddQuiz from "./components/Aicomponents/AddQuiz";
+import SkillQuiz from "./components/Aicomponents/SkillQuiz";
+import AiQuiz from "./components/Aicomponents/AiQuiz";
+import Aichatbot from "./components/Aicomponents/Aichatbot";
+import SeedQuestion from "./components/Aicomponents/SeedQuestion";
+
+
+
+
+
 
 // PrivateRoute
 import PrivateRoute from "./privateroute";
@@ -36,11 +48,11 @@ import PrivateRoute from "./privateroute";
 import "./App.css";
 
 function App() {
-  const [isSignedUp, setIsSignedUp] = useState(localStorage.getItem('isSignedUp') === 'true');
+  const [isSignedUp, setIsSignedUp] = useState(localStorage.getItem("isSignedUp") === "true");
 
   const handleSignup = () => {
     setIsSignedUp(true);
-    localStorage.setItem('isSignedUp', 'true');
+    localStorage.setItem("isSignedUp", "true");
     toast.success("Signup successful!");
   };
 
@@ -60,9 +72,11 @@ function MainLayout({ isSignedUp, setIsSignedUp, handleSignup }) {
       {isAdminRoute ? (
         <AdminNavbar />
       ) : (
-        <Navbar onLoginClick={() => {
-          if (!isSignedUp) toast.error("Please sign up first");
-        }} />
+        <Navbar
+          onLoginClick={() => {
+            if (!isSignedUp) toast.error("Please sign up first");
+          }}
+        />
       )}
 
       <div className="app-container">
@@ -80,6 +94,7 @@ function MainLayout({ isSignedUp, setIsSignedUp, handleSignup }) {
           <Route path="/StudentsPortal/StudentsHome" element={<PrivateRoute><StudentsHome /></PrivateRoute>} />
           <Route path="/StudentsPortal/StudentCourses" element={<PrivateRoute><StudentCourses /></PrivateRoute>} />
           <Route path="/StudentsPortal/StudentProfile" element={<PrivateRoute><StudentProfile /></PrivateRoute>} />
+          
 
           {/* Admin Routes */}
           <Route path="/admin/adminDashboard" element={<AdminDashboard />} />
@@ -92,6 +107,23 @@ function MainLayout({ isSignedUp, setIsSignedUp, handleSignup }) {
           <Route path="/ContentBox/myclasses" element={<MyClasses />} />
           <Route path="/ContentBox/myclassroom" element={<MyClassroom />} />
           <Route path="/admin/update-course/:courseId" element={<UpdateCourse />} />
+
+
+
+          { /* Aicomponents Routes1*/}
+          <Route path="/Aicomponents/Aichatbot" element={<Aichatbot />} />
+          <Route path="/admin/AddQuiz" element={<AddQuiz />} />
+          <Route path="/StudentsPortal/MockInterview" element={<PrivateRoute><Mockinterview /></PrivateRoute>} />
+           <Route path="/StudentsPortal/Quiz" element={<PrivateRoute><Quiz/></PrivateRoute>} />
+                      <Route path="/StudentsPortal/SkillQuiz" element={<PrivateRoute><SkillQuiz/></PrivateRoute>} />
+                         <Route path="/Aicomponents/AiQuiz" element={<PrivateRoute><AiQuiz/></PrivateRoute>} />
+                                                  <Route path="/Aicomponents/SeedQuestion" element={<PrivateRoute><SeedQuestion/></PrivateRoute>} />
+
+
+
+        
+
+
         </Routes>
       </div>
 

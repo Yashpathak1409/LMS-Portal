@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import "./studentpanel.css";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const StudentCourses = () => {
   const [courses, setCourses] = useState([]);
@@ -25,50 +25,56 @@ const StudentCourses = () => {
     }
   };
 
+  const handleDummyPurchase = (courseId) => {
+    const updated = courses.map((course) =>
+      course._id === courseId ? { ...course, purchased: true } : course
+    );
+    setCourses(updated);
+    toast.success("✅ Course purchased (dummy simulation)!");
+  };
+
+  const handleJoinCourse = (course) => {
+    if (!Array.isArray(course.videos) || course.videos.length === 0) {
+      toast.error("⚠️ No videos available for this course.");
+      return;
+    }
+
+    toast.success(`✅ You joined: ${course.title}`);
+    localStorage.setItem("joinedCourseId", course._id);
+    navigate("/ContentBox/myclasses", {
+      state: { videos: course.videos },
+    });
+  };
+
   useEffect(() => {
     fetchCourses();
   }, []);
 
   return (
     <div className="manage-courses">
-      <h2>📚 Available Courses For Students</h2>
-
+      <h2>📚 Available Courses</h2>
       <ToastContainer />
 
       {loading && <p>⏳ Loading courses...</p>}
-
-      {error && (
-        <div className="error">
-          <p>{error}</p>
-          <button onClick={fetchCourses} className="retry-button">🔄 Retry</button>
-        </div>
-      )}
+      {error && <p className="error-text">{error}</p>}
 
       {!loading && !error && courses.length > 0 ? (
-        <ul className="course-list">
+        <div className="course-grid">
           {courses.map((course) => (
-            <li key={course._id} className="course-item">
-              <span>{course.title}</span>
-              <div className="button-group">
-                {course.purchased ? (
-                  <button
-                    className="update-button"
-                    onClick={() => navigate(`/ContentBox/myclasses${course._id}`)}
-                  >
-                    Join
-                  </button>
-                ) : (
-                  <button
-                    className="purchase-button"
-                    onClick={() => navigate(`/purchase/${course._id}`)}
-                  >
-                    Purchase
-                  </button>
-                )}
-              </div>
-            </li>
+            <div key={course._id} className="course-card">
+              <p className="course-title">{course.title}</p>
+              {course.purchased ? (
+                <button className="join-btn" onClick={() => handleJoinCourse(course)}>
+                  Join
+                </button>
+              ) : (
+                <button className="purchase-btn" onClick={() => handleDummyPurchase(course._id)}>
+                  Purchase
+                </button>
+              )}
+            </div>
           ))}
-        </ul>
+        </div>
       ) : (
         !loading && !error && <p>No courses available.</p>
       )}

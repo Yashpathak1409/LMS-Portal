@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthContext";// adjust the path
-import './pannelstyle.css';
+import './AdminNavbar.css';
 
 const AdminNavbar = () => {
   const { isLoggedIn, logout } = useContext(AuthContext);

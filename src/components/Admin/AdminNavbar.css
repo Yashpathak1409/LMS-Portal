@@ -1,0 +1,92 @@
+/* ===========================
+   Simple & Unique Admin Sidebar
+=========================== */
+
+/* Sidebar Container */
+.admin-sidebar {
+  width: 180px;           /* compact width */
+  min-height: 100vh;
+  background: #111;       /* dark background */
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+/* Menu List */
+.admin-menu {
+  list-style: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* Menu Links */
+.admin-link {
+  display: block;
+  width: 160px;
+  padding: 10px 15px;
+  margin: 5px auto;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  transition: background 0.2s ease, transform 0.2s ease;
+  text-align: center;
+}
+
+/* Hover Effect */
+.admin-link:hover {
+  background: #fff;
+  color: #111;
+  transform: translateY(-2px);
+}
+
+/* Active Link */
+.admin-link.active {
+  background: #fff;
+  color: #111;
+  font-weight: 600;
+}
+
+/* Logout Button */
+.logout-button {
+  margin-top: 20px;
+  width: 160px;
+  padding: 10px 15px;
+  background: #ff0000;
+  color: #ffffff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.logout-button:hover {
+  background: #da3030;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Responsive for small screens */
+@media screen and (max-width: 768px) {
+  .admin-sidebar {
+    width: 60px;
+    padding-top: 20px;
+  }
+
+  .admin-link,
+  .logout-button {
+    width: 50px;
+    font-size: 0;
+    padding: 12px 0;
+  }
+}

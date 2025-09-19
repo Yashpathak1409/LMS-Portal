@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import "../styles/global.css";
+import "./Navbar.css";
 import { AuthContext } from "../AuthContext"; // adjust path if needed
 
 const Navbar = () => {
@@ -27,12 +27,18 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <h1 className="logo">LMS Portal</h1>
+      <h1 className="logo">ILMS Portal</h1>
       <ul className="nav-links">
         <li><Link to="/home">Home</Link></li>
         <li><Link to="/StudentsPortal/StudentCourses">Courses</Link></li>
         <li><Link to="/Dashboard">Profile</Link></li>
+        <li><Link to="/StudentsPortal/Quiz">Quiz-section</Link></li>
         <li><Link to="/admin/Admindashboard">Admin control</Link></li>
+          <li><Link to="/StudentsPortal/MockInterview">Mock-interview</Link></li>
+                    <li><Link to="/Aicomponents/Aichatbot">MAGEN-AI</Link></li>
+                                        <li><Link to="/Aicomponents/SeedQuestion">Seeding</Link></li>
+
+ <li><Link to="/Aicomponents/AiQuiz">Ai-Quiz</Link></li>
 
         {!isLoggedIn ? (
           <>

@@ -1,0 +1,49 @@
+.add-question-container {
+  width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 2px solid black;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.add-question-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.add-question-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.add-question-container input,
+.add-question-container textarea {
+  padding: 8px;
+  border: 1px solid #000;
+  border-radius: 6px;
+}
+
+.add-question-container button {
+  background: black;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.add-question-container button:hover {
+  background: white;
+  color: black;
+  border: 1px solid black;
+}
+
+.status {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+}

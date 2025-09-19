@@ -1,0 +1,42 @@
+.layout {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 120px);
+  gap: 12px;
+  padding: 20px;
+}
+
+.skill-card {
+  background-color: #1e90ff;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 8px;
+  position: relative;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.skill-name {
+  margin: 0;
+}
+
+.start-btn {
+  align-self: flex-end; /* bottom-right */
+  background-color: white;
+  color: #1e90ff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.start-btn:hover {
+  background-color: #63b3ed;
+  color: white;
+}
