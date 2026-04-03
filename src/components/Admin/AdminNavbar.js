@@ -48,6 +48,11 @@ const AdminNavbar = () => {
                 Students Home
               </Link>
             </li>
+             <li>
+              <Link to="/Admin/ilmsDashboard" className="admin-link">
+                iLMS-Dashboard
+              </Link>
+            </li>
 
             <li>
               <button onClick={handleLogout} className="admin-link logout-button">

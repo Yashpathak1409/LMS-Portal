@@ -19,6 +19,8 @@ import UsersList from "./components/Admin/UsersList";
 import AdminNavbar from "./components/Admin/AdminNavbar";
 import Assistant from "./components/Admin/Assistant";
 import Courses from "./components/Admin/Courses";
+import IlmsDashboard from "./components/Admin/ilmsDashboard";
+
 import RecordClass from "./components/Admin/RecordClass";
 import Analyticaldata from "./components/Admin/Analyticaldata";
 
@@ -29,6 +31,10 @@ import UpdateCourse from "./components/Admin/UpdateCourse";
 import StudentCourses from "./components/StudentsPortal/StudentCourses";
 import StudentsHome from "./components/StudentsPortal/StudentsHome";
 import StudentProfile from "./components/StudentsPortal/StudentProfile";
+import Material from "./components/StudentsPortal/Material";
+import Mcontent from "./components/StudentsPortal/Mcontent";
+
+
 import Mockinterview from "./components/Aicomponents/MockInterview";
 import Quiz from "./components/Aicomponents/Quiz";
 import AddQuiz from "./components/Aicomponents/AddQuiz";
@@ -86,6 +92,8 @@ function MainLayout({ isSignedUp, setIsSignedUp, handleSignup }) {
           <Route path="/login" element={isSignedUp ? <Login /> : <Navigate to="/register" />} />
           <Route path="/" element={isSignedUp ? <ResetPassword /> : <Navigate to="/register" />} />
           <Route path="/Resetpassword" element={isSignedUp ? <ResetPassword /> : <Navigate to="/register" />} />
+             
+
 
           {/* Protected User Routes using PrivateRoute */}
           <Route path="/Dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
@@ -94,7 +102,8 @@ function MainLayout({ isSignedUp, setIsSignedUp, handleSignup }) {
           <Route path="/StudentsPortal/StudentsHome" element={<PrivateRoute><StudentsHome /></PrivateRoute>} />
           <Route path="/StudentsPortal/StudentCourses" element={<PrivateRoute><StudentCourses /></PrivateRoute>} />
           <Route path="/StudentsPortal/StudentProfile" element={<PrivateRoute><StudentProfile /></PrivateRoute>} />
-          
+          <Route path="/StudentsPortal/Material" element={<PrivateRoute><Material /></PrivateRoute>} />
+<Route path="/StudentsPortal/skill/:skillName/:page" element={<PrivateRoute><Mcontent /></PrivateRoute>} />          
 
           {/* Admin Routes */}
           <Route path="/admin/adminDashboard" element={<AdminDashboard />} />
@@ -104,8 +113,11 @@ function MainLayout({ isSignedUp, setIsSignedUp, handleSignup }) {
           <Route path="/admin/ManageUsers" element={<UsersList />} />
           <Route path="/admin/Courses" element={<Courses />} />
           <Route path="/admin/RecordClass" element={<RecordClass />} />
+          <Route path="/admin/ilmsDashboard" element={<IlmsDashboard />} />
+
           <Route path="/ContentBox/myclasses" element={<MyClasses />} />
           <Route path="/ContentBox/myclassroom" element={<MyClassroom />} />
+          
           <Route path="/admin/update-course/:courseId" element={<UpdateCourse />} />
 
 

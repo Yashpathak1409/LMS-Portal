@@ -1,0 +1,99 @@
+/* Container */
+.material-container {
+  padding: 30px;
+  font-family: Arial, sans-serif;
+  max-width: 960px;
+  margin: auto;
+}
+
+/* Heading */
+.material-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+  color: #333;
+}
+
+/* Grid layout */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  max-height: 75vh; /* scrollable if cards exceed */
+  overflow-y: auto;
+  padding-right: 10px;
+  box-sizing: border-box;
+}
+
+/* Individual Course Card */
+.course-card {
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(0,0,0,0.1));
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  cursor: pointer;
+}
+
+/* Hover Effect */
+.course-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(0,0,0,0.15));
+}
+
+/* Course Title */
+.course-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* Explore Button */
+.course-link {
+  padding: 8px 16px;
+  font-size: 13px;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  text-align: center;
+  align-self: flex-start;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* Button Hover */
+.course-link:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Responsive tweaks for tablet/mobile */
+@media (max-width: 768px) {
+  .courses-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+  }
+  .course-card {
+    padding: 15px;
+  }
+  .course-title {
+    font-size: 16px;
+  }
+  .course-link {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .courses-grid {
+    grid-template-columns: 1fr; /* single column on mobile */
+    gap: 15px;
+  }
+}

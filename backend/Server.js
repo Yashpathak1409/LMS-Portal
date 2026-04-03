@@ -1,3 +1,5 @@
+console.log("✅ Starting server...");
+
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
@@ -432,157 +434,6 @@ app.post("/reset-password", async (req, res) => {
   }
 });
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-// // ============================
-// // Interview Schema & Model
-// // ============================
-// const interviewSchema = new mongoose.Schema({
-//   userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-//   role: { type: String, required: true },
-//   skills: { type: String, required: true },
-//   questions: [
-//     {
-//       question: String,
-//       answer: String,
-//       feedback: String,
-//     },
-//   ],
-//   currentIndex: { type: Number, default: 0 },
-//   status: { type: String, enum: ["ongoing", "completed"], default: "ongoing" },
-//   createdAt: { type: Date, default: Date.now },
-// });
-
-// const Interview = mongoose.model("Interview", interviewSchema, "interviews");
-
-// // ============================
-// // 🔹 Start Interview
-// // ============================
-// app.post("/api/interviews/start", authenticate, async (req, res) => {
-//   try {
-//     const { role, skills } = req.body;
-//     if (!role || !skills) return res.status(400).json({ message: "Role and skills are required" });
-
-//     // 🔑 Debug: check API key
-//     if (!process.env.AIML_API_KEY) {
-//       console.error("❌ AIMLAPI Key missing in env!");
-//       return res.status(500).json({ message: "Server configuration error: AIMLAPI key missing" });
-//     }
-
-//     console.log("Using AIMLAPI Key:", process.env.AIML_API_KEY);
-
-//     const response = await fetch("https://api.aimlapi.com/v1/chat/completions", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Bearer ${process.env.AIML_API_KEY}`,
-//       },
-//       body: JSON.stringify({
-//         model: "gpt-4o",
-//         messages: [
-//           { role: "system", content: "You are a professional interviewer." },
-//           {
-//             role: "user",
-//             content: `Generate 5 interview questions for role: ${role}, skills: ${skills}. Return only plain text questions, each on a new line.`,
-//           },
-//         ],
-//       }),
-//     });
-
-//     const data = await response.json();
-
-//     if (response.status === 401) {
-//       console.error("❌ AIMLAPI Unauthorized:", data);
-//       return res.status(401).json({ message: "Unauthorized: Check your AIMLAPI key", error: data });
-//     }
-
-//     if (!data.choices || !data.choices[0]?.message?.content) {
-//       console.error("❌ AIMLAPI returned invalid data:", data);
-//       return res.status(500).json({ message: "Failed to generate questions", error: data });
-//     }
-
-//     const text = data.choices[0].message.content;
-
-//     const questions = text
-//       .split("\n")
-//       .map((q) => q.trim().replace(/^\d+\.\s*|^-+\s*/, ""))
-//       .filter((q) => q !== "")
-//       .map((q) => ({ question: q }));
-
-//     const interview = new Interview({ userId: req.userId, role, skills, questions });
-//     await interview.save();
-
-//     res.status(201).json({ interviewId: interview._id, questions: interview.questions });
-//   } catch (error) {
-//     console.error("❌ Start interview error:", error);
-//     res.status(500).json({ message: "Internal Server Error", error: error.message });
-//   }
-// });
-
-// // ============================
-// // 🔹 Submit Answer
-// // ============================
-// app.post("/api/interviews/:id/answer", authenticate, async (req, res) => {
-//   try {
-//     const { questionId, answer } = req.body;
-//     if (answer == null) return res.status(400).json({ message: "Answer is required" });
-
-//     const interview = await Interview.findById(req.params.id);
-//     if (!interview) return res.status(404).json({ message: "Interview not found" });
-
-//     if (!interview.questions[questionId]) {
-//       return res.status(400).json({ message: "Invalid questionId" });
-//     }
-
-//     if (!process.env.AIML_API_KEY) {
-//       console.error("❌ AIMLAPI Key missing in env!");
-//       return res.status(500).json({ message: "Server configuration error: AIMLAPI key missing" });
-//     }
-
-//     const feedbackRes = await fetch("https://api.aimlapi.com/v1/chat/completions", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Bearer ${process.env.AIML_API_KEY}`,
-//       },
-//       body: JSON.stringify({
-//         model: "gpt-4o",
-//         messages: [
-//           { role: "system", content: "You are a professional interviewer." },
-//           {
-//             role: "user",
-//             content: `Question: ${interview.questions[questionId].question}\nAnswer: ${answer}\nGive constructive feedback in 2-3 sentences.`,
-//           },
-//         ],
-//       }),
-//     });
-
-//     const feedbackData = await feedbackRes.json();
-
-//     if (feedbackRes.status === 401) {
-//       console.error("❌ AIMLAPI Unauthorized on feedback:", feedbackData);
-//       return res.status(401).json({ message: "Unauthorized: Check your AIMLAPI key", error: feedbackData });
-//     }
-
-//     const feedback = feedbackData.choices?.[0]?.message?.content || "No feedback generated";
-
-//     interview.questions[questionId].answer = answer;
-//     interview.questions[questionId].feedback = feedback;
-//     interview.currentIndex++;
-//     await interview.save();
-
-//     res.json({ feedback, nextIndex: interview.currentIndex });
-//   } catch (error) {
-//     console.error("❌ Submit answer error:", error);
-//     res.status(500).json({ message: "Internal Server Error", error: error.message });
-//   }
-// });
-
-
-
-
 
 // ============================
 // Interview Schema & Model
@@ -776,55 +627,67 @@ app.get("/api/get-questions/:skill", async (req, res) => {
 });
 
 
-// chatbot ka components/////////////////////////////////////////////////////////////////////////////////////////////////////
-
+/// ----------------------------------------
+// Chatbot Conversation Schema
+// ----------------------------------------
 const conversationSchema = new mongoose.Schema({
-  sessionId: String,
-  messages: [{ sender: String, text: String }],
+  sessionId: { type: String, required: true },
+  messages: [
+    {
+      sender: { type: String, enum: ["user", "ai"], required: true },
+      text: { type: String, required: true },
+      time: { type: Date, default: Date.now },
+    },
+  ],
   createdAt: { type: Date, default: Date.now },
 });
 
 const Conversation = mongoose.model("Conversation", conversationSchema);
 
-// --- Chatbot route with MongoDB save ---
+// ----------------------------------------
+// Chatbot Route
+// ----------------------------------------
 app.post("/api/chatbot", async (req, res) => {
   const { prompt, sessionId } = req.body;
 
+  // Validation
   if (!prompt || !sessionId) {
     return res
       .status(400)
-      .json({ error: "Prompt and sessionId are required" });
+      .json({ error: "❗ Prompt and sessionId are required." });
   }
 
   try {
-    // Call Gemini API
+    // --- Calling Gemini API ---
     const response = await fetch(
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" +
-        process.env.GEMINI_API_KEY,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          contents: [
-            {
-              parts: [{ text: prompt }],
-            },
-          ],
+          contents: [{ parts: [{ text: prompt }] }],
         }),
       }
     );
 
     if (!response.ok) {
-      throw new Error(`Gemini API failed: ${response.status}`);
+      console.error("Gemini API error:", await response.text());
+      return res.status(500).json({
+        error: "❌ Gemini API failed. Check your API key or request format.",
+      });
     }
 
     const data = await response.json();
-    const aiReply =
-      data?.candidates?.[0]?.content?.parts?.[0]?.text || "No response from AI";
 
-    // Save conversation in MongoDB
+    const aiReply =
+      data?.candidates?.[0]?.content?.parts?.[0]?.text ||
+      "⚠️ AI did not return a response.";
+
+    // --- Save to MongoDB ---
     let conversation = await Conversation.findOne({ sessionId });
+
     if (!conversation) {
+      // First time creating session
       conversation = new Conversation({
         sessionId,
         messages: [
@@ -833,17 +696,22 @@ app.post("/api/chatbot", async (req, res) => {
         ],
       });
     } else {
+      // Add messages to existing session
       conversation.messages.push({ sender: "user", text: prompt });
       conversation.messages.push({ sender: "ai", text: aiReply });
     }
+
     await conversation.save();
 
+    // Send AI message to frontend
     res.json({ reply: aiReply });
   } catch (error) {
-    console.error("Error in chatbot route:", error);
-    res.status(500).json({ error: "Something went wrong" });
+    console.error("❌ Chatbot route error:", error);
+    res.status(500).json({ error: "❗ Internal server error" });
   }
 });
+
+console.log("yaha tk compile hua");
 
 // --- Fetch past conversation by session ---
 app.get("/api/chatbot/:sessionId", async (req, res) => {
@@ -937,3 +805,7 @@ app.get("/api/quiz/:skill", async (req, res) => {
 // ============================
 const PORT = process.env.PORT || 6500;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
+
+
+console.log("✅ Reached end of file......");

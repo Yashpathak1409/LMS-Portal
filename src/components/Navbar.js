@@ -30,7 +30,7 @@ const Navbar = () => {
       <h1 className="logo">ILMS Portal</h1>
       <ul className="nav-links">
         <li><Link to="/home">Home</Link></li>
-        <li><Link to="/StudentsPortal/StudentCourses">Courses</Link></li>
+        <li><Link to="/StudentsPortal/Material">Courses</Link></li>
         <li><Link to="/Dashboard">Profile</Link></li>
         <li><Link to="/StudentsPortal/Quiz">Quiz-section</Link></li>
         <li><Link to="/admin/Admindashboard">Admin control</Link></li>

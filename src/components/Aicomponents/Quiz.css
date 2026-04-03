@@ -1,42 +1,129 @@
-.layout {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, 120px);
-  gap: 12px;
-  padding: 20px;
+/* ================= General Container ================= */
+.quiz-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px 40px;
+  background: #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  transition: all 0.3s ease;
 }
 
-.skill-card {
-  background-color: #1e90ff;
-  color: white;
+.quiz-container h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.quiz-container h3 {
+  font-size: 22px;
+  margin: 20px 0 15px 0;
+  color: #555;
+}
+
+.quiz-container p {
+  font-size: 16px;
+  color: #666;
+  margin: 10px 0;
+}
+
+/* ================= Input ================= */
+.quiz-container input[type="text"] {
+  width: 80%;
+  padding: 12px 15px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: all 0.2s ease;
+}
+
+.quiz-container input[type="text"]:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+/* ================= Buttons ================= */
+.skill-btn, .options button {
+  cursor: pointer;
+  margin: 10px 5px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #4caf50;
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.skill-btn:hover, .options button:hover {
+  background: #45a049;
+  transform: translateY(-2px);
+}
+
+.options {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 10px;
-  border-radius: 8px;
-  position: relative;
-  font-weight: bold;
-  font-size: 18px;
+  align-items: center;
 }
 
-.skill-name {
-  margin: 0;
+.options button {
+  width: 80%;
+  margin-bottom: 10px;
 }
 
-.start-btn {
-  align-self: flex-end; /* bottom-right */
-  background-color: white;
-  color: #1e90ff;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
+/* ================= Skill List ================= */
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 }
 
-.start-btn:hover {
-  background-color: #63b3ed;
+/* ================= Leaderboard ================= */
+.leaderboard {
+  width: 100%;
+  margin-top: 25px;
+  border-collapse: collapse;
+}
+
+.leaderboard th, .leaderboard td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.leaderboard th {
+  background-color: #4caf50;
   color: white;
+  font-weight: 600;
+}
+
+.leaderboard tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.leaderboard tr:hover {
+  background-color: #e0f7e9;
+}
+
+/* ================= Completed Quiz ================= */
+.quiz-container button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+/* ================= Responsive ================= */
+@media (max-width: 768px) {
+  .quiz-container {
+    padding: 20px;
+  }
+
+  .options button, .skill-btn {
+    width: 90%;
+  }
 }
